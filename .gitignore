@@ -217,5 +217,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# custom: scrap directory
+# Custom: scrap directory
 _scrap/
+
+# Ignore VS Code
+.vscode/
