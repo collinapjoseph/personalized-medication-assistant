@@ -11,7 +11,7 @@ DATA_DIR = Path(__file__).parent / "data" / "sample_docs"
 
 # load sample documents
 DOCUMENTS = []
-splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=10)
+splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=10)
 for filepath in DATA_DIR.iterdir():
     if filepath.is_file():
         content = filepath.read_text()
@@ -37,13 +37,13 @@ collection = client.create_collection(
 collection.add(documents=DOCUMENTS, ids=doc_ids)
 
 # Retrieval
-def retrieve(query: str, top_k: int = 2):
+def retrieve(query: str, top_k: int = 5):
     results = collection.query(query_texts=[query], n_results=top_k)
     return results["documents"][0]  # list of matched document strings
 
 # Generation
 print("Loading generation model...")
-gen_model_name = "google/flan-t5-small"
+gen_model_name = "google/flan-t5-base"
 gen_tokenizer = AutoTokenizer.from_pretrained(gen_model_name)
 gen_model = AutoModelForSeq2SeqLM.from_pretrained(gen_model_name)
 
@@ -51,7 +51,7 @@ gen_model = AutoModelForSeq2SeqLM.from_pretrained(gen_model_name)
 def generate_answer(query: str, retrieved_docs: list[str]) -> str:
     context = "\n".join(retrieved_docs)
     prompt = (
-        f"Context: I am taking medication with the following information \n<medication_information>\n{context}\n</medication_information>\n"
+        f"Context: I am taking medication with the following information \n{context}\n\n"
         f"Question: {query}\n"
         f"Answer using only the context above:"
     )
@@ -81,3 +81,4 @@ user_interface = gr.Interface(
 # Output = RAG-grounded answer
 if __name__ == "__main__":
     user_interface.launch()
+    # print(answer_query("What are the most common side effects of the medication I am taking?"))
