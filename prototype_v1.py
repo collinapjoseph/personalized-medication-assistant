@@ -1,11 +1,3 @@
-"""
-Install dependencies:
-    pip install chromadb sentence-transformers transformers torch
-
-Run:
-    python simple_rag_chroma.py
-"""
-
 import chromadb
 import gradio as gr
 from pathlib import Path
