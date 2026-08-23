@@ -4,7 +4,7 @@ from chromadb.utils import embedding_functions
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # knowledge base
-DATA_DIR = Path(__file__).parent / "data" / "sample_docs"
+DATA_DIR = Path(__file__).parent / "data" / "sample_docs_1"
 
 # load sample documents
 DOCUMENTS = []
