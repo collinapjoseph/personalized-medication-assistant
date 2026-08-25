@@ -18,7 +18,7 @@ for filepath in DATA_DIR.iterdir():
 doc_ids = [f"doc{i}" for i in range(len(DOCUMENTS))]
 
 # Set up vector database.
-client = chromadb.PersistentClient(path="./chroma_db")
+client = chromadb.PersistentClient(path="./medication_db")
 
 embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
     model_name="all-MiniLM-L6-v2"

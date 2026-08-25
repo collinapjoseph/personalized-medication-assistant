@@ -1,12 +1,10 @@
 import chromadb
 import gradio as gr
 from pathlib import Path
-from chromadb.utils import embedding_functions
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # Set up vector database.
-client = chromadb.PersistentClient(path="./chroma_db")
+client = chromadb.PersistentClient(path="./medication_db")
 collection = client.get_collection(name="knowledge_base")
 
 # Retrieval
