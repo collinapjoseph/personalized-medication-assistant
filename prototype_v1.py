@@ -24,7 +24,7 @@ def generate_answer(query: str, retrieved_docs: list[str]) -> str:
     prompt = (
         f"Context: I am taking medication with the following information \n{context}\n\n"
         f"Question: {query}\n"
-        f"Answer using only the context above:"
+        f"Answer the following question using only the context above:"
     )
     inputs = gen_tokenizer(prompt, return_tensors="pt")
     output_ids = gen_model.generate(**inputs, max_new_tokens=50)
@@ -42,7 +42,7 @@ def answer_query(query):
 
 user_interface = gr.Interface(
     fn=answer_query,
-    inputs=gr.TextArea(label="User Query", placeholder="Ask a question about your mediciation"),
+    inputs=gr.TextArea(label="User Query", placeholder="Ask a question about your medication"),
     outputs=gr.TextArea(label="Assistant Answer"),
     title="Personalized Medication Assistant"
 )
