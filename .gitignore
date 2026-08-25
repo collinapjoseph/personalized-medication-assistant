@@ -222,3 +222,6 @@ _scrap/
 
 # Ignore VS Code
 .vscode/
+
+# Default folder for vector database
+medication_db/
