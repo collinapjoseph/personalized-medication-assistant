@@ -6,4 +6,4 @@ Dependencies:
 
 ## Run
 Terminal/CMD:
-```python simple_rag_chroma.py```
+```python prototype_v1.py```
