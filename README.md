@@ -11,5 +11,6 @@ Execute the follwing command to install dependancies:
 ```pip install -r requirements.txt```
 
 ## Run
-1. Run the following command in terminal: `python main.py`
-2. Navigate to [http://127.0.0.1:7860/](http://127.0.0.1:7860/) to access the Gradio UI.
+1. Run in terminal: `python generate_database.py`. This create a sample database.
+2. Run in terminal: `python main.py`. This launches a Gradio UI when queries can be input.
+3. Navigate to [http://127.0.0.1:7860/](http://127.0.0.1:7860/) to access the Gradio UI.
